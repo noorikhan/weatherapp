@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link type="text/css" rel="stylesheet" href="weather.css" />
+  </head>
+  <body>
+    <div id="map">
+      <iframe></iframe>
+    </div>
+    <h1 id="text" style="text-align: center">Weather in Your city</h1>
+
+    <div id="input">
+      <input
+        class="ipbox box"
+        type="tex"
+        placeholder="Enter city name"
+        id="name"
+      />
+      <button class="btnbox box" onclick="getWeather()">Search</button>
+    </div>
+
+    <div id="dataContainer">
+      <div id="daily"></div>
+    </div>
+  </body>
+</html>
+<script src="weather.js"></script>

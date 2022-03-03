@@ -1,0 +1,69 @@
+body {
+  background-image: linear-gradient(to right, #8360c3, #2ebf91);
+}
+
+#input {
+  justify-content: center;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+.ipbox {
+  background-color: rgba(173, 252, 234, 1);
+  width: 500px;
+}
+.btnbox {
+  background-color: rgba(192, 229, 246, 1);
+  width: 150px;
+}
+.box {
+  padding: 1%;
+  border: none;
+  font-size: large;
+}
+
+#dataContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 20%;
+}
+
+#dailydata {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+
+  background-image: linear-gradient(
+    95.2deg,
+    rgba(173, 252, 234, 1) 26.8%,
+    rgba(192, 229, 246, 1) 64%
+  );
+  width: 300px;
+  border-radius: 5%;
+}
+
+#daily {
+  display: flex;
+  gap: 10px;
+}
+
+#dailydata > p,
+h3 {
+  text-align: center;
+}
+img {
+  margin: 0% 18%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#map > iframe {
+  width: 100%;
+  height: 100%;
+}
