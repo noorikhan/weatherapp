@@ -22,10 +22,21 @@ async function getWeather() {
     let response1 = await fetch(url2);
     let data1 = await response1.json();
 
+    displayCurrentTemp(data1);
     displayWeather(data1.daily);
   } catch (error) {
     alert("Please Enter correct City Name");
   }
+}
+
+function displayCurrentTemp(data) {
+  let div = document.getElementById("currentTemp");
+  div.innerText = "";
+
+  let temp = document.createElement("h1");
+  temp.innerText = `Current Temp: ${data.current.temp}ºC`;
+
+  div.append(temp);
 }
 
 let wall = document.getElementById("daily");
@@ -41,39 +52,67 @@ function displayWeather(daily) {
     let div = document.createElement("div");
     div.id = "dailydata";
 
+    let day = getkeyByValue(days, dt.toDateString().split(" ")[0]);
+
     let date = document.createElement("h3");
-    date.innerHTML = `${dt.toDateString()}`;
+    date.innerHTML = day;
+
+    let date2 = document.createElement("h3");
+    date2.innerHTML = `${dt.toDateString().split(" ")[2]} ${
+      dt.toDateString().split(" ")[1]
+    }`;
 
     let min = document.createElement("p");
-    min.innerText = `Min Temp: ${Math.round(item.temp.min)}º`;
+    min.innerText = `Min Temp: ${Math.round(item.temp.min)}ºC`;
 
     let max = document.createElement("p");
-    max.innerText = `Max Temp: ${Math.round(item.temp.max)}º`;
+    max.innerText = `Max Temp: ${Math.round(item.temp.max)}ºC`;
 
     let icon = document.createElement("img");
-    if (item.weather[0].id === 800) {
-      icon.src = "weatherImages/clear.png";
-    } else if (item.weather[0].id === 802) {
-      icon.src = "weatherImages/cloud1.png";
-    } else if (item.weather[0].id === 803) {
-      icon.src = "weatherImages/cloud2.png";
-    } else if (item.weather[0].id === 200 || item.weather[0].id < 233) {
-      icon.src = "weatherImages/thunderstrom.png";
-    } else if (item.weather[0].id === 300 || item.weather[0].id < 322) {
-      icon.src = "weatherImages/drizzle.png";
-    } else if (item.weather[0].id === 500 || item.weather[0].id < 512) {
-      icon.src = "weatherImages/rainy.png";
-    } else if (item.weather[0].id === 520 || item.weather[0].id < 532) {
-      icon.src = "weatherImages/rain.png";
-    } else if (item.weather[0].id === 600 || item.weather[0].id < 623) {
-      icon.src = "weatherImages/snow.png";
-    } else if (item.weather[0].id === 700 || item.weather[0].id < 782) {
-      icon.src = "weatherImages/mist.png";
-    } else if (item.weather[0].id === 801 || item.weather[0].id < 805) {
-      icon.src = "weatherImages/clouds.png";
-    }
 
-    div.append(date, icon, min, max);
+    let id = item.weather[0].id;
+
+    getIcon(id, icon);
+
+    div.append(date, date2, icon, min, max);
     wall.append(div);
   });
+}
+
+let days = {
+  Saturday: "Sat",
+  Sunday: "Sun",
+  Monday: "Mon",
+  Tuesday: "Tue",
+  Wednesday: "Wed",
+  Thursday: "Thu",
+  Friday: "Fri",
+};
+
+function getkeyByValue(obj, value) {
+  return Object.keys(obj).find((key) => obj[key] === value);
+}
+
+function getIcon(id, icon) {
+  if (id === 800) {
+    icon.src = "weatherImages/clear.png";
+  } else if (id === 802) {
+    icon.src = "weatherImages/cloud1.png";
+  } else if (id === 803) {
+    icon.src = "weatherImages/cloud2.png";
+  } else if (id === 200 || id < 233) {
+    icon.src = "weatherImages/thunderstrom.png";
+  } else if (id === 300 || id < 322) {
+    icon.src = "weatherImages/drizzle.png";
+  } else if (id === 500 || id < 512) {
+    icon.src = "weatherImages/rainy.png";
+  } else if (id === 520 || id < 532) {
+    icon.src = "weatherImages/rain.png";
+  } else if (id === 600 || id < 623) {
+    icon.src = "weatherImages/snow.png";
+  } else if (id === 700 || id < 782) {
+    icon.src = "weatherImages/mist.png";
+  } else if (id === 801 || id < 805) {
+    icon.src = "weatherImages/clouds.png";
+  }
 }

@@ -7,7 +7,22 @@ body {
   display: flex;
   position: relative;
   z-index: 1;
+  margin-bottom: 10px;
 }
+
+#currentTemp {
+  border-radius: 4px;
+  width: 330px;
+  padding: 5px;
+  margin: auto;
+  z-index: 1;
+  position: relative;
+  background-color: #ade6eb;
+}
+#currentTemp > h1 {
+  margin: 0px;
+}
+
 .ipbox {
   background-color: rgba(173, 252, 234, 1);
   width: 500px;
@@ -26,7 +41,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  margin-top: 20%;
+  margin-top: 15%;
 }
 
 #dailydata {
@@ -53,6 +68,8 @@ h3 {
 }
 img {
   margin: 0% 18%;
+  width: 70px;
+  height: 70px;
 }
 
 #map {
